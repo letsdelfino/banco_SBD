@@ -1,5 +1,6 @@
 package br.com.SBD.banco_SBD;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -178,6 +179,45 @@ public class ContaDAOImplementacao implements ContaDAO {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public BigDecimal consultarSaldo(Integer id) {
+		PreparedStatement ps = null;
+		ResultSet rs;
+		String url;
+		Connection conexaoBanco = null;
+		Conta conta;
+		try {
+			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("select saldo from contas where id=?");
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				conta = new Conta();
+
+				conta.setSaldo(rs.getBigDecimal("saldo"));
+				
+				BigDecimal contaSaldo = conta.getSaldo();
+
+				return contaSaldo;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if (conexaoBanco != null) {
+				try {
+					conexaoBanco.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 }
