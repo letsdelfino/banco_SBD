@@ -2,6 +2,8 @@ package br.com.SBD.banco_SBD;
 
 import java.math.BigDecimal;
 
+import br.com.leticia.banco.ContaDAOImplementacao;
+
 public class Main {
 	public static void main(String[] args) {
 		ContaDAOImplementacao contaDAO = new ContaDAOImplementacao();
