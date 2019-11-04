@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ContaDAOImplementacao implements ContaDAO {
 
-	public Conta consultar(String nome) {
+	/*public Conta consultar(String nome) {
 		PreparedStatement ps = null;
 		ResultSet rs;
 		String url;
@@ -48,7 +48,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 				}
 			}
 		}
-	}
+	}*/
 
 	public boolean inserir(Conta conta) {
 		PreparedStatement ps = null;
@@ -85,7 +85,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 
 	}
 
-	public Conta consultar(Integer id) {
+	/*public Conta consultar(Integer id) {
 		PreparedStatement ps = null;
 		ResultSet rs;
 		String url;
@@ -122,64 +122,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 			}
 		}
 
-	}
-
-	public boolean excluir(Conta conta) {
-		PreparedStatement ps = null;
-		String url;
-		Connection conexaoBanco = null;
-		try {
-			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
-			conexaoBanco = DriverManager.getConnection(url);
-			ps = conexaoBanco.prepareStatement("delete from contas where id=?");
-			ps.setInt(1, conta.getId());
-
-			if (ps.executeUpdate() > 0)
-				return true;
-			else
-				return false;
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			if (conexaoBanco != null) {
-				try {
-					conexaoBanco.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-	}
-
-	public List<Conta> listar(String nome) {
-		PreparedStatement ps = null;
-		String url;
-		Connection conexaoBanco = null;
-		try{
-			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
-			conexaoBanco = DriverManager.getConnection(url);
-			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas");
-			try (ResultSet rs = ps.executeQuery()) {
-				List<Conta> conta = new ArrayList<>();
-				while (rs.next()) {
-					Conta c = new Conta();
-					c.setId(rs.getInt("id"));
-					c.setNome(rs.getString("nome"));
-					c.setSaldo(rs.getBigDecimal("saldo"));
-					
-					conta.add(c);
-				}
-				return conta;
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
+	}*/
 	
 	public BigDecimal consultarSaldo(Integer id) {
 		PreparedStatement ps = null;
