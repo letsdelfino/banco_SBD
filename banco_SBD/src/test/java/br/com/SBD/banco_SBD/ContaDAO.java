@@ -8,4 +8,5 @@ public interface ContaDAO {
 //	public Conta consultar(Integer id);
 	public boolean inserir (Conta conta);
 	public BigDecimal consultarSaldo(Integer id);
+	public List<Evento> listar(Integer id);
 }

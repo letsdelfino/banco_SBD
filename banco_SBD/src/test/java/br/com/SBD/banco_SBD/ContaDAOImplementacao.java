@@ -162,5 +162,33 @@ public class ContaDAOImplementacao implements ContaDAO {
 		}
 
 	}
+	
+	public List<Evento> listar(Integer id) {
+		PreparedStatement ps = null;
+		String url;
+		Connection conexaoBanco = null;
+		try{
+			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("select data_evento, id, tipo_operacao, valor , id_destino_evento from eventos");
+			try (ResultSet rs = ps.executeQuery()) {
+				List<Evento> evento = new ArrayList<>();
+				while (rs.next()) {
+					Evento e = new Evento();
+					e.setDataEvento(rs.getDate("data_evento"));
+					e.setTipoOperacao(rs.getString("tipo_operacao"));
+					e.setValor(rs.getBigDecimal("valor"));
+					e.setIdDestinoEvento(rs.getInt("id_destino_evento"));
+					
+					evento.add(e);
+				}
+				return evento;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
 }
