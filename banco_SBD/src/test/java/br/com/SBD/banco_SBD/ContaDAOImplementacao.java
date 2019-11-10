@@ -19,7 +19,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		Connection conexaoBanco = null;
 		Conta conta;
 		try {
-			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where nome=?");
 			ps.setString(1, nome);
@@ -56,9 +56,9 @@ public class ContaDAOImplementacao implements ContaDAO {
 		String url;
 		Connection conexaoBanco = null;
 		try {
-			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
 			conexaoBanco = DriverManager.getConnection(url);
-			ps = conexaoBanco.prepareStatement("insert into contas (id, nome, saldo) values (?,?,?)");
+			ps = conexaoBanco.prepareStatement("insert into contas (nome, saldo) values (?,?)");
 			ps.setInt(1, conta.getId());
 			ps.setString(2, conta.getNome());
 			ps.setBigDecimal(3, conta.getSaldo());
@@ -92,7 +92,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		Connection conexaoBanco = null;
 		Conta conta;
 		try {
-			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where id=?");
 			ps.setInt(1, id);
@@ -131,7 +131,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		Connection conexaoBanco = null;
 		Conta conta;
 		try {
-			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("select saldo from contas where id=?");
 			ps.setInt(1, id);
@@ -168,16 +168,17 @@ public class ContaDAOImplementacao implements ContaDAO {
 		String url;
 		Connection conexaoBanco = null;
 		try{
-			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
 			conexaoBanco = DriverManager.getConnection(url);
-			ps = conexaoBanco.prepareStatement("select data_evento, id, tipo_operacao, valor , id_destino_evento from eventos");
+			ps = conexaoBanco.prepareStatement("select data_evento, id_evento, tipo_evento, valor, id_origem_evento, id_destino_evento from eventos");
 			try (ResultSet rs = ps.executeQuery()) {
 				List<Evento> evento = new ArrayList<>();
 				while (rs.next()) {
 					Evento e = new Evento();
 					e.setDataEvento(rs.getDate("data_evento"));
-					e.setTipoOperacao(rs.getString("tipo_operacao"));
+					e.setTipoOperacao(rs.getString("tipo_evento"));
 					e.setValor(rs.getBigDecimal("valor"));
+					
 					e.setIdDestinoEvento(rs.getInt("id_destino_evento"));
 					
 					evento.add(e);

@@ -5,9 +5,9 @@ import java.sql.Date;
 
 public class Evento {
 	private Date data_evento;
-	private Integer id;
+	private Integer id_evento;
 	private BigDecimal valor;
-	private String tipo_operacao;
+	private String tipo_evento;
 	private Integer id_destino_evento;
 	private Integer id_origem_evento;
 
@@ -20,11 +20,11 @@ public class Evento {
 	}
 	
 	public Integer getId() {
-		return id;
+		return id_evento;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id_evento = id;
 	}
 	
 	public BigDecimal getValor() {
@@ -36,11 +36,11 @@ public class Evento {
 	}
 	
 	public String getTipoOperacao() {
-		return tipo_operacao;
+		return tipo_evento;
 	}
 
 	public void setTipoOperacao(String tipo_operacao) {
-		this.tipo_operacao = tipo_operacao;
+		this.tipo_evento = tipo_operacao;
 	}
 	
 	public Integer getIdDestinoEvento() {
@@ -55,7 +55,7 @@ public class Evento {
 		return id_origem_evento;
 	}
 
-	public void setIdOrigemEvento(Integer id_destino_evento) {
+	public void setIdOrigemEvento(Integer id_origem_evento) {
 		this.id_origem_evento = id_origem_evento;
 	}
 
