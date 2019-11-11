@@ -8,9 +8,7 @@ Ele se trata de um banco construído com tecnologia java e Maven. Contém as seg
 * Cadastro
 * Saque
 * Depósito
-* Consulta de extrato (a ser desenvolvido)
-* Listar (a ser removido provavelmente)
-* Extrato
+* Consulta de eventoo/extrato (a ser desenvolvido)
 * Transação
 
 A pasta inserida neste projeto contém o projeto inteiro do eclipse. Os arquivos referentes a implementação do projeto se encontram em: https://github.com/letsdelfino/banco_SBD/tree/master/banco_SBD/src/test/java/br/com/SBD/banco_SBD.
