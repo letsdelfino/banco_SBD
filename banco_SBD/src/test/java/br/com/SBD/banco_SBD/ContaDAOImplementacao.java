@@ -12,27 +12,29 @@ import java.util.List;
 
 public class ContaDAOImplementacao implements ContaDAO {
 
-	/*public Conta consultar(String nome) {
+	/*public boolean logar(String login, String senha) {
 		PreparedStatement ps = null;
 		ResultSet rs;
 		String url;
 		Connection conexaoBanco = null;
-		Conta conta;
+		Cadastro cadastro;
 		try {
 			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
 			conexaoBanco = DriverManager.getConnection(url);
-			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where nome=?");
-			ps.setString(1, nome);
+			ps = conexaoBanco.prepareStatement("select senha where login=?");
+			ps.setString(1, login);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				conta = new Conta();
+				cadastro = new Cadastro();
+				
+				String senhaCorreta = cadastro.getSenha();
 
-				conta.setId(rs.getInt("id"));
-				conta.setNome(rs.getString("nome"));
-				conta.setSaldo(rs.getBigDecimal("saldo"));
-
-				return conta;
+				if(senha == senhaCorreta){
+					return true;
+				}
+				else
+					return false;
 			} else {
 				return null;
 			}

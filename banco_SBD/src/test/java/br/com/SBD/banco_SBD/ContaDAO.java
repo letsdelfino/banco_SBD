@@ -9,4 +9,5 @@ public interface ContaDAO {
 	public boolean inserir (Conta conta);
 	public BigDecimal consultarSaldo(Integer id);
 	public List<Evento> listar(Integer id);
+	//public Cadastro logar(String nome);
 }
