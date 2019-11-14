@@ -14,8 +14,8 @@ public class Main {
 		//System.out.print(contaId);
 		//contaDAO.excluir(contaId5);
 		
-		List<Evento> lista = contaDAO.listar(2);
-		//System.out.println(lista);
+		List<Evento> lista = contaDAO.listar(1);
+		System.out.println(lista);
 
 	}
 }

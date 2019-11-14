@@ -3,5 +3,7 @@
 	<classpathentry kind="src" path="banco_SBD/src/main/java"/>
 	<classpathentry kind="src" path="banco_SBD/src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/lele_/Downloads/mysql-connector-java-8.0.18/mysql-connector-java-8.0.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lele_/Downloads/postgresql-42.2.8.jre6.jar"/>
 	<classpathentry kind="output" path="banco_SBD/target/classes"/>
 </classpath>
