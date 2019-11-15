@@ -138,13 +138,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				conta = new Conta();
-
-				conta.setSaldo(rs.getBigDecimal("saldo"));
-
-				BigDecimal contaSaldo = conta.getSaldo();
-
-				return contaSaldo;
+				return rs.getBigDecimal("saldo");
 			} else {
 				return null;
 			}
