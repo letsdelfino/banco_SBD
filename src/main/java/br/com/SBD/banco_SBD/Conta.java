@@ -6,20 +6,13 @@ public class Conta {
 	private Integer id;
 	private BigDecimal saldo;
 
-	public Conta(BigDecimal saldo) {
+	public Conta(Integer id, BigDecimal saldo) {
+		this.id = id;
 		this.saldo = saldo;
-	}
-
-	public Conta() {
-		this(new BigDecimal(0));
 	}
 
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public BigDecimal getSaldo() {
