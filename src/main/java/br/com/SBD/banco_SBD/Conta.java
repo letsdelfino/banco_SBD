@@ -48,8 +48,8 @@ public class Conta {
 		strRetorno.append("\nNome:"+getNome());
 		strRetorno.append("\nSaldo: "+getSaldo().doubleValue());
 		strRetorno.append("\n-------- ");
-		
-		return strRetorno.toString(); 
+
+		return strRetorno.toString();
 	}
 
 }

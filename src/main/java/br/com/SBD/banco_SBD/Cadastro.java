@@ -6,7 +6,7 @@ public class Cadastro {
 	private String email;
 	private String login;
 	private String senha;
-	
+
 	public Integer getId_cadastro() {
 		return id_cadastro;
 	}
@@ -38,7 +38,7 @@ public class Cadastro {
 		this.senha = senha;
 	}
 
-	
+
 	public String toString() {
 		StringBuilder strRetorno = new StringBuilder();
 		strRetorno.append("----------------");
@@ -46,9 +46,9 @@ public class Cadastro {
 		strRetorno.append("\nCliente: " + getNome());
 		strRetorno.append("\nEmail: " + getEmail());
 		strRetorno.append("\nLogin: " + getLogin());
-		
+
 		return strRetorno.toString();
 	}
-	
+
 
 }

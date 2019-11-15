@@ -14,11 +14,11 @@ public class Evento {
 	public Date getDataEvento(){
 		return data_evento;
 	}
-	
+
 	public void setDataEvento(Date data_evento){
 		this.data_evento = data_evento;
 	}
-	
+
 	public Integer getId() {
 		return id_evento;
 	}
@@ -26,7 +26,7 @@ public class Evento {
 	public void setId(Integer id) {
 		this.id_evento = id;
 	}
-	
+
 	public BigDecimal getValor() {
 		return valor;
 	}
@@ -34,7 +34,7 @@ public class Evento {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	
+
 	public String getTipoOperacao() {
 		return tipo_evento;
 	}
@@ -42,7 +42,7 @@ public class Evento {
 	public void setTipoOperacao(String tipo_operacao) {
 		this.tipo_evento = tipo_operacao;
 	}
-	
+
 	public Integer getIdDestinoEvento() {
 		return id_destino_evento;
 	}
@@ -50,7 +50,7 @@ public class Evento {
 	public void setIdDestinoEvento(Integer id_destino_evento) {
 		this.id_destino_evento = id_destino_evento;
 	}
-	
+
 	public Integer getIdOrigemEvento() {
 		return id_origem_evento;
 	}
@@ -67,7 +67,7 @@ public class Evento {
 		strRetorno.append("\nValor:"+getValor().doubleValue());
 		strRetorno.append("\nConta Destino: "+getId());
 		strRetorno.append("\n-------- ");
-		
-		return strRetorno.toString(); 
+
+		return strRetorno.toString();
 	}
 }

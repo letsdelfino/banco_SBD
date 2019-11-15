@@ -26,7 +26,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 
 			if (rs.next()) {
 				cadastro = new Cadastro();
-				
+
 				String senhaCorreta = cadastro.getSenha();
 
 				if(senha == senhaCorreta){
@@ -124,7 +124,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		}
 
 	}*/
-	
+
 	public BigDecimal consultarSaldo(Integer id) {
 		PreparedStatement ps = null;
 		ResultSet rs;
@@ -142,7 +142,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 				conta = new Conta();
 
 				conta.setSaldo(rs.getBigDecimal("saldo"));
-				
+
 				BigDecimal contaSaldo = conta.getSaldo();
 
 				return contaSaldo;
@@ -163,7 +163,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		}
 
 	}
-	
+
 	public List<Evento> listar(Integer id) {
 		PreparedStatement ps = null;
 		String url;
@@ -179,9 +179,9 @@ public class ContaDAOImplementacao implements ContaDAO {
 					e.setDataEvento(rs.getDate("data_evento"));
 					e.setTipoOperacao(rs.getString("tipo_evento"));
 					e.setValor(rs.getBigDecimal("valor"));
-					
+
 					e.setIdDestinoEvento(rs.getInt("id_destino_evento"));
-					
+
 					evento.add(e);
 				}
 				return evento;
