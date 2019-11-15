@@ -21,5 +21,5 @@ compile: $(CLASSES:.java=.class)
 run: compile
 	java -classpath $(SOURCEPATH) Main
 
-clean: $(CLASSES:.java=.class)
+clean:
 	$(RM) $(CLASSES:.java=.class)
