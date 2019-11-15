@@ -1,6 +1,6 @@
 package br.com.SBD.banco_SBD;
 
-public class Cadastro {
+public class Cliente {
 	private Integer id_cadastro;
 	private String nome;
 	private String email;

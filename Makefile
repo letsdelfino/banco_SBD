@@ -7,7 +7,7 @@ JC = javac
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	$(SOURCEPATH)/$(PACKAGE)/Cadastro.java \
+	$(SOURCEPATH)/$(PACKAGE)/Cliente.java \
 	$(SOURCEPATH)/$(PACKAGE)/Evento.java \
 	$(SOURCEPATH)/$(PACKAGE)/Conta.java \
 	$(SOURCEPATH)/$(PACKAGE)/ContaDAO.java \
