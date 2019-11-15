@@ -61,8 +61,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("insert into contas (nome, saldo) values (?,?)");
 			ps.setInt(1, conta.getId());
-			ps.setString(2, conta.getNome());
-			ps.setBigDecimal(3, conta.getSaldo());
+			ps.setBigDecimal(2, conta.getSaldo());
 			rs = ps.executeUpdate();
 
 			if (rs > 0) {

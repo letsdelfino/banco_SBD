@@ -4,16 +4,14 @@ import java.math.BigDecimal;
 
 public class Conta {
 	private Integer id;
-	private String nome;
 	private BigDecimal saldo;
 
-	public Conta(String nome, BigDecimal saldo) {
-		this.nome = nome;
+	public Conta(BigDecimal saldo) {
 		this.saldo = saldo;
 	}
 
 	public Conta() {
-		this.saldo = new BigDecimal(0);
+		this(new BigDecimal(0));
 	}
 
 	public Integer getId() {
@@ -22,14 +20,6 @@ public class Conta {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public BigDecimal getSaldo() {
@@ -45,7 +35,6 @@ public class Conta {
 		strRetorno.append("-------- ");
 		strRetorno.append("\nConta: ");
 		strRetorno.append("\nId: "+getId());
-		strRetorno.append("\nNome:"+getNome());
 		strRetorno.append("\nSaldo: "+getSaldo().doubleValue());
 		strRetorno.append("\n-------- ");
 
