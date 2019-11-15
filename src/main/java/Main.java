@@ -1,5 +1,4 @@
-package br.com.SBD.banco_SBD;
-
+import br.com.SBD.banco_SBD.*;
 import java.math.BigDecimal;
 import java.util.List;
 
