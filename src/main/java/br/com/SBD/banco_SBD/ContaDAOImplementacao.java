@@ -3,25 +3,26 @@ package br.com.SBD.banco_SBD;
 import java.sql.*;
 
 public class ContaDAOImplementacao implements ContaDAO {
-	private final String tableName = "accounts";
+	private final String TABLE_NAME = "accounts";
 
 	private Database database;
 	private PreparedStatement getStatement;
 	private PreparedStatement setStatement;
 
-	private final String sqlCreateTable =
-		"CREATE TABLE IF NOT EXISTS " + tableName + " ("
+	private final String SQL_CREATE_TABLE =
+		"CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
 		+ " `ID` INT UNSIGNED NOT NULL AUTO_INCREMENT, "
 		+ " `balance` BIGINT NOT NULL, "
 		+ " PRIMARY KEY (`ID`)"
 		+ ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
-	private final String sqlGet = "SELECT * FROM " + tableName + " WHERE ID=?";
-	private final String sqlSet =
-		"IF EXISTS (SELECT * FROM " + tableName + " WHERE ID=?) THEN" +
-		"	UPDATE " + tableName + " SET balance=? WHERE ID=?;" +
+	private final String SQL_GET =
+		"SELECT * FROM " + TABLE_NAME + " WHERE ID=?;";
+	private final String SQL_SET =
+		"IF EXISTS (SELECT * FROM " + TABLE_NAME + " WHERE ID=?) THEN" +
+		"	UPDATE " + TABLE_NAME + " SET balance=? WHERE ID=?;" +
 		"ELSE" +
-		"	INSERT INTO " + tableName + " SET balance=?;" +
+		"	INSERT INTO " + TABLE_NAME + " SET balance=?;" +
 		"END IF";
 
 	public ContaDAOImplementacao() throws SQLException, ClassNotFoundException
@@ -34,13 +35,13 @@ public class ContaDAOImplementacao implements ContaDAO {
 	private void createTableIfNotExists() throws SQLException
 	{
 		Statement statement = database.getConnection().createStatement();
-		statement.executeUpdate(sqlCreateTable);
+		statement.executeUpdate(SQL_CREATE_TABLE);
 	}
 
 	private void prepareStatements() throws SQLException
 	{
-		getStatement = database.getConnection().prepareStatement(sqlGet);
-		setStatement = database.getConnection().prepareStatement(sqlSet);
+		getStatement = database.getConnection().prepareStatement(SQL_GET);
+		setStatement = database.getConnection().prepareStatement(SQL_SET);
 	}
 
 	public void set(Conta conta) throws SQLException

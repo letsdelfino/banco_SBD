@@ -7,10 +7,10 @@ public class Database
 	private final String HOST = "that.violates.me";
 	private final String USER = "sbd";
 	private final String PASS = "ZUgtwC3uTYu2Agrr7PAEV9Hd";
-	private final String DATABASE = "sbd";
+	private final String NAME = "sbd";
 
 	private final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-	private final String DB_URL = "jdbc:mariadb://" + HOST + "/" + DATABASE;
+	private final String DB_URL = "jdbc:mariadb://" + HOST + "/" + NAME;
 
 	private static Database instance;
 	private static Connection connection;
