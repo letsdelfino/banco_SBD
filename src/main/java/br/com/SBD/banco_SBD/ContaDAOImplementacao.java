@@ -25,11 +25,11 @@ public class ContaDAOImplementacao implements ContaDAO {
 	private final String SQL_GET_ALL =
 		"SELECT * FROM " + TABLE_NAME + ";";
 	private final String SQL_SET =
-		"IF EXISTS (SELECT * FROM " + TABLE_NAME + " WHERE ID=?) THEN" +
-		"	UPDATE " + TABLE_NAME + " SET balance=? WHERE ID=?;" +
-		"ELSE" +
-		"	INSERT INTO " + TABLE_NAME + " SET ID=?, balance=?;" +
-		"END IF";
+		"IF EXISTS (SELECT * FROM " + TABLE_NAME + " WHERE ID=?) THEN"
+		+ " UPDATE " + TABLE_NAME + " SET balance=? WHERE ID=?;"
+		+ "ELSE"
+		+ " INSERT INTO " + TABLE_NAME + " SET ID=?, balance=?;"
+		+ "END IF";
 	private final String SQL_ID =
 		"SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES "
 		+ "WHERE TABLE_SCHEMA='" + database.NAME + "' AND "
