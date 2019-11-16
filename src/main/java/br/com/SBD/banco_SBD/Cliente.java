@@ -7,14 +7,16 @@ public class Cliente {
 	private String email;
 	private String login;
 	private String senha;
+	private Conta conta;
 
 	public Cliente(Integer id, String nome, String email,
-	               String login, String senha) {
+	               String login, String senha, Conta conta) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.login = login;
 		this.senha = senha;
+		this.conta = conta;
 	}
 
 	public Integer getId() {
@@ -57,6 +59,16 @@ public class Cliente {
 		this.senha = senha;
 	}
 
+	public Conta getConta()
+	{
+		return conta;
+	}
+
+	public void setConta(Conta conta)
+	{
+		this.conta = conta;
+	}
+
 	public String toString() {
 		StringBuilder strRetorno = new StringBuilder();
 		strRetorno.append("----------------");
@@ -64,6 +76,7 @@ public class Cliente {
 		strRetorno.append("\nNome: " + getNome());
 		strRetorno.append("\nEmail: " + getEmail());
 		strRetorno.append("\nLogin: " + getLogin());
+		strRetorno.append("\nConta: " + getConta());
 		return strRetorno.toString();
 	}
 }
