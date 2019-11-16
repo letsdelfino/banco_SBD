@@ -1,12 +1,11 @@
 package br.com.SBD.banco_SBD;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Evento {
 	private Date data_evento;
 	private Integer id_evento;
-	private BigDecimal valor;
+	private Long valor;
 	private String tipo_evento;
 	private Integer id_destino_evento;
 	private Integer id_origem_evento;
@@ -27,11 +26,11 @@ public class Evento {
 		this.id_evento = id;
 	}
 
-	public BigDecimal getValor() {
+	public Long getValor() {
 		return valor;
 	}
 
-	public void setValor(BigDecimal valor) {
+	public void setValor(Long valor) {
 		this.valor = valor;
 	}
 
@@ -64,7 +63,7 @@ public class Evento {
 		strRetorno.append("-------- ");
 		strRetorno.append("\nData operacao: "+getDataEvento());
 		strRetorno.append("\nTipo operacao: "+getTipoOperacao());
-		strRetorno.append("\nValor:"+getValor().doubleValue());
+		strRetorno.append("\nValor:"+getValor());
 		strRetorno.append("\nConta Destino: "+getId());
 		strRetorno.append("\n-------- ");
 
