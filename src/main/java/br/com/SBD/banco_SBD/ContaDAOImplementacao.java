@@ -9,6 +9,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 	private PreparedStatement getStatement;
 	private PreparedStatement setStatement;
 	private PreparedStatement idStatement;
+	private PreparedStatement deleteStatement;
 
 	private final String SQL_CREATE_TABLE =
 		"CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
@@ -29,6 +30,8 @@ public class ContaDAOImplementacao implements ContaDAO {
 		"SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES "
 		+ "WHERE TABLE_SCHEMA='" + database.NAME + "' AND "
 		+ "TABLE_NAME='" + TABLE_NAME + "';";
+	private final String SQL_DELETE =
+		"DELETE FROM " + TABLE_NAME + " WHERE ID=?;";
 
 	public ContaDAOImplementacao() throws SQLException, ClassNotFoundException
 	{
@@ -48,6 +51,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		getStatement = database.getConnection().prepareStatement(SQL_GET);
 		setStatement = database.getConnection().prepareStatement(SQL_SET);
 		idStatement = database.getConnection().prepareStatement(SQL_ID);
+		deleteStatement = database.getConnection().prepareStatement(SQL_DELETE);
 	}
 
 	public void set(Conta conta) throws SQLException
@@ -68,6 +72,12 @@ public class ContaDAOImplementacao implements ContaDAO {
 			return new Conta(set.getInt(1), set.getLong(2));
 		else
 			return null;
+	}
+
+	public void delete(Integer id) throws SQLException
+	{
+		deleteStatement.setInt(1, id);
+		deleteStatement.executeQuery();
 	}
 
 	public Integer getNewId() throws SQLException
