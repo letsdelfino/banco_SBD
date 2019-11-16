@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class ContaDAOImplementacao implements ContaDAO {
 	protected static final String TABLE_NAME = "accounts";
 
+	private static ContaDAO instance;
 	private Database database;
 	private PreparedStatement setStatement;
 	private PreparedStatement getStatement;
@@ -37,11 +38,19 @@ public class ContaDAOImplementacao implements ContaDAO {
 	private final String SQL_DELETE =
 		"DELETE FROM " + TABLE_NAME + " WHERE ID=?;";
 
-	public ContaDAOImplementacao() throws SQLException, ClassNotFoundException
+	private ContaDAOImplementacao() throws SQLException, ClassNotFoundException
 	{
 		database = Database.getInstance();
 		createTableIfNotExists();
 		prepareStatements();
+	}
+
+	public static ContaDAO getInstance()
+		throws SQLException, ClassNotFoundException
+	{
+		if(instance == null)
+			instance = new ContaDAOImplementacao();
+		return instance;
 	}
 
 	private void createTableIfNotExists() throws SQLException

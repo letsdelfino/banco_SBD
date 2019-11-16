@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		ContaDAOImplementacao contaDAO;
 		try {
-			contaDAO = new ContaDAOImplementacao();
+			contaDAO = ContaDAOImplementacao.getInstance();
 			Conta conta = new Conta(1, 123l);
 			contaDAO.set(conta);
 			Conta conta2 = contaDAO.get(1);
