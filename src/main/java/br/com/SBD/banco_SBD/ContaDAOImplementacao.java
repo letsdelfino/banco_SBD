@@ -11,174 +11,174 @@ import java.util.List;
 
 public class ContaDAOImplementacao implements ContaDAO {
 
-    /*public boolean logar(String login, String senha) {
-        PreparedStatement ps = null;
-        ResultSet rs;
-        String url;
-        Connection conexaoBanco = null;
-        Login logado;
-        try {
-            url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
-            conexaoBanco = DriverManager.getConnection(url);
-            ps = conexaoBanco.prepareStatement("select senha from cadastro where login=?");
-            ps.setString(1, login);
-            rs = ps.executeQuery();
+	/*public boolean logar(String login, String senha) {
+		PreparedStatement ps = null;
+		ResultSet rs;
+		String url;
+		Connection conexaoBanco = null;
+		Login logado;
+		try {
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("select senha from cadastro where login=?");
+			ps.setString(1, login);
+			rs = ps.executeQuery();
 
-            if (rs.next()) {
-                logado = new Login(login, senha);
+			if (rs.next()) {
+				logado = new Login(login, senha);
 
-                String senhaCorreta = logado.getSenha();
+				String senhaCorreta = logado.getSenha();
 
-                if (senha == senhaCorreta) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } finally {
-            if (conexaoBanco != null) {
-                try {
-                    conexaoBanco.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return true;
-    }*/
+				if (senha == senhaCorreta) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if (conexaoBanco != null) {
+				try {
+					conexaoBanco.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return true;
+	}*/
 
-    public boolean inserir(Conta conta) {
-        PreparedStatement ps = null;
-        int rs;
-        String url;
-        Connection conexaoBanco = null;
-        try {
-            url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
-            conexaoBanco = DriverManager.getConnection(url);
-            ps = conexaoBanco.prepareStatement("insert into conta (nome, saldo) values (?,?)");
-            ps.setInt(1, conta.getId());
-            ps.setBigDecimal(2, conta.getSaldo());
-            rs = ps.executeUpdate();
+	public boolean inserir(Conta conta) {
+		PreparedStatement ps = null;
+		int rs;
+		String url;
+		Connection conexaoBanco = null;
+		try {
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("insert into conta (nome, saldo) values (?,?)");
+			ps.setInt(1, conta.getId());
+			ps.setBigDecimal(2, conta.getSaldo());
+			rs = ps.executeUpdate();
 
-            if (rs > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } finally {
-            if (conexaoBanco != null) {
-                try {
-                    conexaoBanco.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+			if (rs > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if (conexaoBanco != null) {
+				try {
+					conexaoBanco.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-    }
+	}
 
-    /*public Conta consultar(Integer id) {
-     PreparedStatement ps = null;
-     ResultSet rs;
-     String url;
-     Connection conexaoBanco = null;
-     Conta conta;
-     try {
-     url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
-     conexaoBanco = DriverManager.getConnection(url);
-     ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where id=?");
-     ps.setInt(1, id);
-     rs = ps.executeQuery();
+	/*public Conta consultar(Integer id) {
+	 PreparedStatement ps = null;
+	 ResultSet rs;
+	 String url;
+	 Connection conexaoBanco = null;
+	 Conta conta;
+	 try {
+	 url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
+	 conexaoBanco = DriverManager.getConnection(url);
+	 ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where id=?");
+	 ps.setInt(1, id);
+	 rs = ps.executeQuery();
 
-     if (rs.next()) {
-     conta = new Conta();
+	 if (rs.next()) {
+	 conta = new Conta();
 
-     conta.setId(rs.getInt("id"));
-     conta.setNome(rs.getString("nome"));
-     conta.setSaldo(rs.getBigDecimal("saldo"));
+	 conta.setId(rs.getInt("id"));
+	 conta.setNome(rs.getString("nome"));
+	 conta.setSaldo(rs.getBigDecimal("saldo"));
 
-     return conta;
-     } else {
-     return null;
-     }
-     } catch (SQLException e) {
-     e.printStackTrace();
-     throw new RuntimeException(e);
-     } finally {
-     if (conexaoBanco != null) {
-     try {
-     conexaoBanco.close();
-     } catch (SQLException e) {
-     e.printStackTrace();
-     }
-     }
-     }
+	 return conta;
+	 } else {
+	 return null;
+	 }
+	 } catch (SQLException e) {
+	 e.printStackTrace();
+	 throw new RuntimeException(e);
+	 } finally {
+	 if (conexaoBanco != null) {
+	 try {
+	 conexaoBanco.close();
+	 } catch (SQLException e) {
+	 e.printStackTrace();
+	 }
+	 }
+	 }
 
-     }*/
-    public BigDecimal consultarSaldo(Integer id) {
-        PreparedStatement ps = null;
-        ResultSet rs;
-        String url;
-        Connection conexaoBanco = null;
-        Conta conta;
-        try {
-            url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
-            conexaoBanco = DriverManager.getConnection(url);
-            ps = conexaoBanco.prepareStatement("select saldo from conta where id_conta=?");
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
+	 }*/
+	public BigDecimal consultarSaldo(Integer id) {
+		PreparedStatement ps = null;
+		ResultSet rs;
+		String url;
+		Connection conexaoBanco = null;
+		Conta conta;
+		try {
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("select saldo from conta where id_conta=?");
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
 
-            if (rs.next()) {
-                return rs.getBigDecimal("saldo");
-            } else {
-                return null;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } finally {
-            if (conexaoBanco != null) {
-                try {
-                    conexaoBanco.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+			if (rs.next()) {
+				return rs.getBigDecimal("saldo");
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if (conexaoBanco != null) {
+				try {
+					conexaoBanco.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-    }
+	}
 
-    public List<Evento> listar(Integer id) {
-        PreparedStatement ps = null;
-        String url;
-        Connection conexaoBanco = null;
-        try {
-            url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
-            conexaoBanco = DriverManager.getConnection(url);
-            ps = conexaoBanco.prepareStatement("select data_evento, id_evento, tipo_evento, valor, id_origem_evento, id_destino_evento from eventos");
-            try (ResultSet rs = ps.executeQuery()) {
-                List<Evento> evento = new ArrayList<>();
-                while (rs.next()) {
-                    Evento e = new Evento();
-                    e.setDataEvento(rs.getDate("data_evento"));
-                    e.setTipoOperacao(rs.getString("tipo_evento"));
-                    e.setValor(rs.getBigDecimal("valor"));
-                    e.setIdDestinoEvento(rs.getInt("id_destino_evento"));
+	public List<Evento> listar(Integer id) {
+		PreparedStatement ps = null;
+		String url;
+		Connection conexaoBanco = null;
+		try {
+			url = "jdbc:postgresql://postgres.crkhg7zmi4g5.sa-east-1.rds.amazonaws.com/postgres?user=postgres&password=postgres";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("select data_evento, id_evento, tipo_evento, valor, id_origem_evento, id_destino_evento from eventos");
+			try (ResultSet rs = ps.executeQuery()) {
+				List<Evento> evento = new ArrayList<>();
+				while (rs.next()) {
+					Evento e = new Evento();
+					e.setDataEvento(rs.getDate("data_evento"));
+					e.setTipoOperacao(rs.getString("tipo_evento"));
+					e.setValor(rs.getBigDecimal("valor"));
+					e.setIdDestinoEvento(rs.getInt("id_destino_evento"));
 
-                    evento.add(e);
-                }
-                return evento;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-    }
+					evento.add(e);
+				}
+				return evento;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
 }

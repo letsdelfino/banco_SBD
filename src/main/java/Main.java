@@ -4,17 +4,17 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
-        ContaDAOImplementacao contaDAO = new ContaDAOImplementacao();
+	public static void main(String[] args) {
+		ContaDAOImplementacao contaDAO = new ContaDAOImplementacao();
 
 		//Conta contaJoaoConsulta = contaDAO.consultar("Diego");
-        //System.out.println(contaJoaoConsulta.toString());
-        BigDecimal contaId = contaDAO.consultarSaldo(1);
-        System.out.print(contaId);
-        //contaDAO.excluir(contaId5);
+		//System.out.println(contaJoaoConsulta.toString());
+		BigDecimal contaId = contaDAO.consultarSaldo(1);
+		System.out.print(contaId);
+		//contaDAO.excluir(contaId5);
 
-        List<Evento> lista = contaDAO.listar(1);
-        System.out.println(lista);
+		List<Evento> lista = contaDAO.listar(1);
+		System.out.println(lista);
 
-    }
+	}
 }
