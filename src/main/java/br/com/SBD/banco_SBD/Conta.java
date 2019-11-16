@@ -22,15 +22,12 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
+	@Override
 	public String toString() {
-		StringBuilder strRetorno = new StringBuilder();
-		strRetorno.append("-------- ");
-		strRetorno.append("\nConta: ");
-		strRetorno.append("\nId: " + getId());
-		strRetorno.append("\nSaldo: " + getSaldo());
-		strRetorno.append("\n-------- ");
-
-		return strRetorno.toString();
+		return "Conta{"
+			+ "id='" + id + "'"
+			+ "saldo='" + saldo + "'"
+			+ "}";
 	}
 
 }

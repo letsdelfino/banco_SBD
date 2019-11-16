@@ -58,15 +58,15 @@ public class Evento {
 		this.id_origem_evento = id_origem_evento;
 	}
 
+	@Override
 	public String toString() {
-		StringBuilder strRetorno = new StringBuilder();
-		strRetorno.append("-------- ");
-		strRetorno.append("\nData operacao: "+getDataEvento());
-		strRetorno.append("\nTipo operacao: "+getTipoOperacao());
-		strRetorno.append("\nValor:"+getValor());
-		strRetorno.append("\nConta Destino: "+getId());
-		strRetorno.append("\n-------- ");
-
-		return strRetorno.toString();
+		return "Evento{"
+			+ "data_evento='" + data_evento + "'"
+			+ "id_evento='" + id_evento + "'"
+			+ "valor='" + valor + "'"
+			+ "tipo_evento='" + tipo_evento + "'"
+			+ "id_destino_evento='" + id_destino_evento + "'"
+			+ "id_origem_evento='" + id_origem_evento + "'"
+			+ "}";
 	}
 }

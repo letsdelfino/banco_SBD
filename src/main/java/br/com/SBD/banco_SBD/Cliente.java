@@ -69,14 +69,15 @@ public class Cliente {
 		this.conta = conta;
 	}
 
+	@Override
 	public String toString() {
-		StringBuilder strRetorno = new StringBuilder();
-		strRetorno.append("----------------");
-		strRetorno.append("\nNúmero da Conta: " + getId());
-		strRetorno.append("\nNome: " + getNome());
-		strRetorno.append("\nEmail: " + getEmail());
-		strRetorno.append("\nLogin: " + getLogin());
-		strRetorno.append("\nConta: " + getConta());
-		return strRetorno.toString();
+		return "Cliente{"
+			+ "id='" + id + "'"
+			+ "nome='" + nome + "'"
+			+ "email='" + email + "'"
+			+ "login='" + login + "'"
+			+ "senha='" + senha + "'"
+			+ "conta='" + conta + "'"
+			+ "}";
 	}
 }
