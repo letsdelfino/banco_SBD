@@ -18,7 +18,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		+ " `ID` INT UNSIGNED NOT NULL AUTO_INCREMENT, "
 		+ " `balance` BIGINT NOT NULL, "
 		+ " PRIMARY KEY (`ID`)"
-		+ ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
+		+ ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
 	private final String SQL_GET =
 		"SELECT * FROM " + TABLE_NAME + " WHERE ID=?;";
