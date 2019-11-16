@@ -18,9 +18,9 @@
 
    <dependencies>
     <dependency>
-		<groupId>org.postgresql</groupId>
-		<artifactId>postgresql</artifactId>
-		<version>9.2-1003-jdbc4</version>
+		<groupId>org.mariadb.jdbc</groupId>
+		<artifactId>mariadb-java-client</artifactId>
+		<version>2.5.1</version>
     </dependency>
   </dependencies>
 </project>
