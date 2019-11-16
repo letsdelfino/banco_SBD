@@ -1,9 +1,6 @@
 package br.com.SBD.banco_SBD;
 
-import java.math.BigDecimal;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ContaDAOImplementacao implements ContaDAO {
 	private final String tableName = "accounts";
