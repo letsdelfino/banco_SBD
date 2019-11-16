@@ -16,10 +16,10 @@ public class ContaDAOImplementacao implements ContaDAO {
 		+ " PRIMARY KEY (`ID`)"
 		+ ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
-	private final String sqlGet = "SELECT * FROM " + tableName + " WHERE id=?";
+	private final String sqlGet = "SELECT * FROM " + tableName + " WHERE ID=?";
 	private final String sqlSet =
-		"IF EXISTS (SELECT * FROM " + tableName + " WHERE id=?) THEN" +
-		"	UPDATE " + tableName + " SET balance=? WHERE id=?;" +
+		"IF EXISTS (SELECT * FROM " + tableName + " WHERE ID=?) THEN" +
+		"	UPDATE " + tableName + " SET balance=? WHERE ID=?;" +
 		"ELSE" +
 		"	INSERT INTO " + tableName + " SET balance=?;" +
 		"END IF";
