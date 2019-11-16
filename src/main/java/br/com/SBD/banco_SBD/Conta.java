@@ -1,13 +1,11 @@
 package br.com.SBD.banco_SBD;
 
-import java.math.BigDecimal;
-
 public class Conta {
 
 	private Integer id;
-	private BigDecimal saldo;
+	private Long saldo;
 
-	public Conta(Integer id, BigDecimal saldo) {
+	public Conta(Integer id, Long saldo) {
 		this.id = id;
 		this.saldo = saldo;
 	}
@@ -16,11 +14,11 @@ public class Conta {
 		return id;
 	}
 
-	public BigDecimal getSaldo() {
+	public Long getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(BigDecimal saldo) {
+	public void setSaldo(Long saldo) {
 		this.saldo = saldo;
 	}
 
@@ -29,7 +27,7 @@ public class Conta {
 		strRetorno.append("-------- ");
 		strRetorno.append("\nConta: ");
 		strRetorno.append("\nId: " + getId());
-		strRetorno.append("\nSaldo: " + getSaldo().doubleValue());
+		strRetorno.append("\nSaldo: " + getSaldo());
 		strRetorno.append("\n-------- ");
 
 		return strRetorno.toString();
