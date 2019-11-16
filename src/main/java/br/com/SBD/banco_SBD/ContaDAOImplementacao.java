@@ -3,11 +3,12 @@ package br.com.SBD.banco_SBD;
 import java.sql.*;
 
 public class ContaDAOImplementacao implements ContaDAO {
-	private final String TABLE_NAME = "accounts";
+	protected static final String TABLE_NAME = "accounts";
 
 	private Database database;
 	private PreparedStatement getStatement;
 	private PreparedStatement setStatement;
+	private PreparedStatement idStatement;
 
 	private final String SQL_CREATE_TABLE =
 		"CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
@@ -24,6 +25,10 @@ public class ContaDAOImplementacao implements ContaDAO {
 		"ELSE" +
 		"	INSERT INTO " + TABLE_NAME + " SET ID=?, balance=?;" +
 		"END IF";
+	private final String SQL_ID =
+		"SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES "
+		+ "WHERE TABLE_SCHEMA='" + database.NAME + "' AND "
+		+ "TABLE_NAME='" + TABLE_NAME + "';";
 
 	public ContaDAOImplementacao() throws SQLException, ClassNotFoundException
 	{
@@ -42,6 +47,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 	{
 		getStatement = database.getConnection().prepareStatement(SQL_GET);
 		setStatement = database.getConnection().prepareStatement(SQL_SET);
+		idStatement = database.getConnection().prepareStatement(SQL_ID);
 	}
 
 	public void set(Conta conta) throws SQLException
@@ -62,5 +68,12 @@ public class ContaDAOImplementacao implements ContaDAO {
 			return new Conta(set.getInt(1), set.getLong(2));
 		else
 			return null;
+	}
+
+	public Integer getNewId() throws SQLException
+	{
+		ResultSet set = idStatement.executeQuery();
+		set.next();
+		return set.getInt(1);
 	}
 }

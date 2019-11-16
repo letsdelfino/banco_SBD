@@ -13,6 +13,7 @@ public class Main {
 			Conta conta2 = contaDAO.get(1);
 			if(conta2 != null)
 				System.out.println(conta2);
+			System.out.printf("Next free index: %d\n", contaDAO.getNewId());
 		} catch (ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
