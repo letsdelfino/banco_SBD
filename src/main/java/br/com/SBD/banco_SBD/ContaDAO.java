@@ -1,16 +1,11 @@
 package br.com.SBD.banco_SBD;
 
+import java.sql.SQLException;
 import java.math.BigDecimal;
 import java.util.List;
 
 public interface ContaDAO {
-//	public Conta consultar(String nome);
-//	public Conta consultar(Integer id);
-
-	public boolean inserir(Conta conta);
-
-	public BigDecimal consultarSaldo(Integer id);
-
-	public List<Evento> listar(Integer id);
-	//public Cadastro logar(String nome);
+	public void set(Conta conta) throws SQLException;
+	//can return null
+	public Conta get(Integer id) throws SQLException;
 }
