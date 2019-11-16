@@ -19,6 +19,9 @@ CLASSES = \
 	$(SOURCEPATH)/$(PACKAGE)/Conta.java \
 	$(SOURCEPATH)/$(PACKAGE)/ContaDAO.java \
 	$(SOURCEPATH)/$(PACKAGE)/ContaDAOImplementacao.java \
+	$(SOURCEPATH)/$(PACKAGE)/Cliente.java \
+	$(SOURCEPATH)/$(PACKAGE)/ClienteDAO.java \
+	$(SOURCEPATH)/$(PACKAGE)/ClienteDAOImplementacao.java \
 	$(SOURCEPATH)/Main.java
 
 default: compile
