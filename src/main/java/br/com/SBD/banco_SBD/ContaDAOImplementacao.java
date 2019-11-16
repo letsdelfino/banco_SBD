@@ -1,13 +1,15 @@
 package br.com.SBD.banco_SBD;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ContaDAOImplementacao implements ContaDAO {
 	protected static final String TABLE_NAME = "accounts";
 
 	private Database database;
-	private PreparedStatement getStatement;
 	private PreparedStatement setStatement;
+	private PreparedStatement getStatement;
+	private PreparedStatement getAllStatement;
 	private PreparedStatement idStatement;
 	private PreparedStatement deleteStatement;
 
@@ -20,6 +22,8 @@ public class ContaDAOImplementacao implements ContaDAO {
 
 	private final String SQL_GET =
 		"SELECT * FROM " + TABLE_NAME + " WHERE ID=?;";
+	private final String SQL_GET_ALL =
+		"SELECT * FROM " + TABLE_NAME + ";";
 	private final String SQL_SET =
 		"IF EXISTS (SELECT * FROM " + TABLE_NAME + " WHERE ID=?) THEN" +
 		"	UPDATE " + TABLE_NAME + " SET balance=? WHERE ID=?;" +
@@ -48,8 +52,10 @@ public class ContaDAOImplementacao implements ContaDAO {
 
 	private void prepareStatements() throws SQLException
 	{
-		getStatement = database.getConnection().prepareStatement(SQL_GET);
 		setStatement = database.getConnection().prepareStatement(SQL_SET);
+		getStatement = database.getConnection().prepareStatement(SQL_GET);
+		getAllStatement =
+			database.getConnection().prepareStatement(SQL_GET_ALL);
 		idStatement = database.getConnection().prepareStatement(SQL_ID);
 		deleteStatement = database.getConnection().prepareStatement(SQL_DELETE);
 	}
@@ -72,6 +78,15 @@ public class ContaDAOImplementacao implements ContaDAO {
 			return new Conta(set.getInt(1), set.getLong(2));
 		else
 			return null;
+	}
+
+	public ArrayList<Conta> getAll() throws SQLException
+	{
+		ArrayList<Conta> list = new ArrayList<>();
+		ResultSet set = getAllStatement.executeQuery();
+		while(set.next())
+			list.add(new Conta(set.getInt(1), set.getLong(2)));
+		return list;
 	}
 
 	public void delete(Integer id) throws SQLException

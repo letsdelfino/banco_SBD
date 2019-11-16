@@ -1,6 +1,6 @@
 import br.com.SBD.banco_SBD.*;
 import java.sql.*;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -15,6 +15,9 @@ public class Main {
 				System.out.println(conta2);
 			contaDAO.delete(1);
 			System.out.printf("Next free index: %d\n", contaDAO.getNewId());
+			System.out.println("All accounts:");
+			for(Conta c : contaDAO.getAll())
+				System.out.println(c);
 		} catch (ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
