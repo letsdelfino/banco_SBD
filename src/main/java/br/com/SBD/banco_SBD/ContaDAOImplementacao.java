@@ -22,7 +22,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		"IF EXISTS (SELECT * FROM " + TABLE_NAME + " WHERE ID=?) THEN" +
 		"	UPDATE " + TABLE_NAME + " SET balance=? WHERE ID=?;" +
 		"ELSE" +
-		"	INSERT INTO " + TABLE_NAME + " SET balance=?;" +
+		"	INSERT INTO " + TABLE_NAME + " SET ID=?, balance=?;" +
 		"END IF";
 
 	public ContaDAOImplementacao() throws SQLException, ClassNotFoundException
@@ -49,7 +49,8 @@ public class ContaDAOImplementacao implements ContaDAO {
 		setStatement.setInt(1, conta.getId());
 		setStatement.setLong(2, conta.getSaldo());
 		setStatement.setInt(3, conta.getId());
-		setStatement.setLong(4, conta.getSaldo());
+		setStatement.setInt(4, conta.getId());
+		setStatement.setLong(5, conta.getSaldo());
 		setStatement.executeQuery();
 	}
 
