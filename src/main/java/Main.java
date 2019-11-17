@@ -28,7 +28,7 @@ public class Main {
 		Cliente cliente =
 			new Cliente(clientID, System.getenv("USER") + "",
 			            System.getenv("USER") + "@mailserver.net",
-			            System.getenv("USER") + "",
+			            System.getenv("USER") + "" + clientID,
 			            "password123", new Conta(accountID, 123l));
 		try {
 			System.out.println("All clients:");
