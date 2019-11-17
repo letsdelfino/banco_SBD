@@ -54,7 +54,7 @@ public class ClienteDAOImplementacao implements ClienteDAO {
 		prepareStatements();
 	}
 
-	public static ClienteDAOImplementacao getInstance()
+	public static ClienteDAO getInstance()
 		throws SQLException, ClassNotFoundException
 	{
 		if(instance == null)
