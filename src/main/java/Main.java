@@ -36,6 +36,7 @@ public class Main {
 			for(Cliente c : clienteDAO.getAll())
 				System.out.println(c);
 			// clienteDAO.delete(clientID);
+			System.out.println("Client xp2 :" + clienteDAO.get("xp2"));
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
