@@ -13,9 +13,10 @@ PACKAGE = br/com/SBD/banco_SBD
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
+	$(SOURCEPATH)/$(PACKAGE)/OperationType.java \
 	$(SOURCEPATH)/$(PACKAGE)/Database.java \
 	$(SOURCEPATH)/$(PACKAGE)/Cliente.java \
-	$(SOURCEPATH)/$(PACKAGE)/Evento.java \
+	$(SOURCEPATH)/$(PACKAGE)/Event.java \
 	$(SOURCEPATH)/$(PACKAGE)/Conta.java \
 	$(SOURCEPATH)/$(PACKAGE)/ContaDAO.java \
 	$(SOURCEPATH)/$(PACKAGE)/ContaDAOImplementacao.java \
