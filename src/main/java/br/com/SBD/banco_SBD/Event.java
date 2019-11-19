@@ -1,6 +1,6 @@
 package br.com.SBD.banco_SBD;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Event {
 	private Integer id;
