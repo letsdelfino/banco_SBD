@@ -8,10 +8,12 @@ public class Main {
 		Authenticator auth;
 		ContaDAO contaDAO;
 		ClienteDAO clienteDAO;
+		EventDAO eventDAO;
 		Integer newClientID;
 		try {
 			contaDAO = ContaDAOImplementacao.getInstance();
 			clienteDAO = ClienteDAOImplementacao.getInstance();
+			eventDAO = EventDAOImpl.getInstance();
 			auth = AuthenticatorImpl.getInstance();
 			newClientID = clienteDAO.getNewId();
 			Cliente cliente =
@@ -26,6 +28,12 @@ public class Main {
 				System.out.println(c);
 			// clienteDAO.delete(newClientID);
 			System.out.println("Client xp2: " + clienteDAO.get("xp2"));
+			Event event =
+				new Event(eventDAO.getNewId(), OperationType.DEPOSIT,
+				          600l, cliente.getConta(), cliente.getConta());
+			eventDAO.set(event);
+			for(Event e: eventDAO.get(OperationType.DEPOSIT))
+				System.out.println(e);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

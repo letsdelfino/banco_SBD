@@ -23,6 +23,8 @@ CLASSES = \
 	$(SOURCEPATH)/$(PACKAGE)/Cliente.java \
 	$(SOURCEPATH)/$(PACKAGE)/ClienteDAO.java \
 	$(SOURCEPATH)/$(PACKAGE)/ClienteDAOImplementacao.java \
+	$(SOURCEPATH)/$(PACKAGE)/EventDAO.java \
+	$(SOURCEPATH)/$(PACKAGE)/EventDAOImpl.java \
 	$(SOURCEPATH)/$(PACKAGE)/Authenticator.java \
 	$(SOURCEPATH)/$(PACKAGE)/AuthenticatorImpl.java \
 	$(SOURCEPATH)/Main.java
