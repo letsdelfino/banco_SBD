@@ -20,6 +20,16 @@ public class Event {
 		this.destination = destination;
 	}
 
+	public Event(Integer id, OperationType action, Long amount,
+	             Conta source, Conta destination) {
+		this.id = id;
+		this.action = action;
+		this.date = new Date();
+		this.amount = amount;
+		this.source = source;
+		this.destination = destination;
+	}
+
 	public Conta getDestination() {
 		return destination;
 	}
