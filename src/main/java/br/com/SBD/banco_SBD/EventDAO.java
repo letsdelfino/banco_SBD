@@ -1,6 +1,7 @@
 package br.com.SBD.banco_SBD;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public interface EventDAO {
