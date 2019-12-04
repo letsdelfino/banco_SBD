@@ -1,6 +1,6 @@
 package br.com.SBD.banco_SBD;
 
-public class Cliente {
+public class Cliente implements java.io.Serializable {
 
 	private Integer id;
 	private String nome;

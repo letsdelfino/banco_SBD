@@ -12,3 +12,7 @@ Ele se trata de um banco construído com tecnologia java e Maven. Contém as seg
 * Transação
 
 A pasta inserida neste projeto contém o projeto inteiro do eclipse. Os arquivos referentes a implementação do projeto se encontram em: https://github.com/letsdelfino/banco_SBD/tree/master/src/main/java/br/com/SBD/banco_SBD.
+
+O arquivo physical-diagram.dia contém o diagrama que descreve a
+disposição física da arquitetura e pode ser editado com o programa
+DIA.

@@ -1,6 +1,6 @@
 package br.com.SBD.banco_SBD;
 
-public class Conta {
+public class Conta implements java.io.Serializable {
 
 	private Integer id;
 	private Long saldo;

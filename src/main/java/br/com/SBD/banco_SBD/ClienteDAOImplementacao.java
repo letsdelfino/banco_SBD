@@ -11,6 +11,7 @@ public class ClienteDAOImplementacao implements ClienteDAO {
 	private ContaDAO contaDAO;
 	private PreparedStatement setStatement;
 	private PreparedStatement getStatement;
+	private PreparedStatement getLoginStatement;
 	private PreparedStatement getAllStatement;
 	private PreparedStatement idStatement;
 	private PreparedStatement deleteStatement;
@@ -20,7 +21,7 @@ public class ClienteDAOImplementacao implements ClienteDAO {
 		+ " `ID` INT UNSIGNED NOT NULL AUTO_INCREMENT, "
 		+ " `name` VARCHAR(255) NOT NULL, "
 		+ " `email` VARCHAR(255) NOT NULL, "
-		+ " `login` VARCHAR(255) NOT NULL, "
+		+ " `login` VARCHAR(255) NOT NULL UNIQUE, "
 		+ " `password` VARCHAR(255) NOT NULL, "
 		+ " `account_ID` INT UNSIGNED NOT NULL, "
 		+ " PRIMARY KEY (`ID`)"
@@ -28,6 +29,8 @@ public class ClienteDAOImplementacao implements ClienteDAO {
 
 	private final String SQL_GET =
 		"SELECT * FROM " + TABLE_NAME + " WHERE ID=?;";
+	private final String SQL_GET_LOGIN =
+		"SELECT * FROM " + TABLE_NAME + " WHERE login=?;";
 	private final String SQL_GET_ALL =
 		"SELECT * FROM " + TABLE_NAME + ";";
 	private final String SQL_SET =
@@ -54,7 +57,7 @@ public class ClienteDAOImplementacao implements ClienteDAO {
 		prepareStatements();
 	}
 
-	public static ClienteDAOImplementacao getInstance()
+	public static ClienteDAO getInstance()
 		throws SQLException, ClassNotFoundException
 	{
 		if(instance == null)
@@ -72,6 +75,8 @@ public class ClienteDAOImplementacao implements ClienteDAO {
 	{
 		setStatement = database.getConnection().prepareStatement(SQL_SET);
 		getStatement = database.getConnection().prepareStatement(SQL_GET);
+		getLoginStatement =
+			database.getConnection().prepareStatement(SQL_GET_LOGIN);
 		getAllStatement =
 			database.getConnection().prepareStatement(SQL_GET_ALL);
 		idStatement = database.getConnection().prepareStatement(SQL_ID);
@@ -101,6 +106,16 @@ public class ClienteDAOImplementacao implements ClienteDAO {
 	{
 		getStatement.setInt(1, id);
 		ResultSet set = getStatement.executeQuery();
+		if(set.next())
+			return getFromSet(set);
+		else
+			return null;
+	}
+
+	public Cliente get(String login) throws SQLException
+	{
+		getLoginStatement.setString(1, login);
+		ResultSet set = getLoginStatement.executeQuery();
 		if(set.next())
 			return getFromSet(set);
 		else

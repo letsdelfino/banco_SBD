@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Database
 {
-	private final String HOST = "that.violates.me";
+	private final String HOST = "192.168.1.3";
 	private final String USER = "sbd";
 	private final String PASS = "ZUgtwC3uTYu2Agrr7PAEV9Hd";
 	protected static final String NAME = "sbd";

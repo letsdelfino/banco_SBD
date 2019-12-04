@@ -3,6 +3,8 @@ MARIADB_VERSION = 2.5.1
 WGET = wget --quiet --show-progress
 JC = javac
 
+HOST = expert.chickenkiller.com
+
 JFLAGS = -sourcepath $(SOURCEPATH)
 
 SOURCEPATH = src/main/java
@@ -13,23 +15,39 @@ PACKAGE = br/com/SBD/banco_SBD
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
+	$(SOURCEPATH)/$(PACKAGE)/OperationType.java \
 	$(SOURCEPATH)/$(PACKAGE)/Database.java \
 	$(SOURCEPATH)/$(PACKAGE)/Cliente.java \
-	$(SOURCEPATH)/$(PACKAGE)/Evento.java \
+	$(SOURCEPATH)/$(PACKAGE)/Event.java \
 	$(SOURCEPATH)/$(PACKAGE)/Conta.java \
 	$(SOURCEPATH)/$(PACKAGE)/ContaDAO.java \
 	$(SOURCEPATH)/$(PACKAGE)/ContaDAOImplementacao.java \
 	$(SOURCEPATH)/$(PACKAGE)/Cliente.java \
 	$(SOURCEPATH)/$(PACKAGE)/ClienteDAO.java \
 	$(SOURCEPATH)/$(PACKAGE)/ClienteDAOImplementacao.java \
-	$(SOURCEPATH)/Main.java
+	$(SOURCEPATH)/$(PACKAGE)/EventDAO.java \
+	$(SOURCEPATH)/$(PACKAGE)/EventDAOImpl.java \
+	$(SOURCEPATH)/$(PACKAGE)/Bank.java \
+	$(SOURCEPATH)/$(PACKAGE)/BankImpl.java \
+	$(SOURCEPATH)/Worker.java \
+	$(SOURCEPATH)/Server.java \
+	$(SOURCEPATH)/Client.java
 
 default: compile
 
 compile: $(CLASSES:.java=.class)
 
-run: compile deps
-	java -classpath $(LIBS):$(SOURCEPATH) Main
+client: compile deps
+	java -Djava.rmi.server.hostname=$(HOST) \
+	-classpath $(LIBS):$(SOURCEPATH) Client
+
+worker: compile deps
+	java -Djava.rmi.server.hostname=$(HOST) \
+	-classpath $(LIBS):$(SOURCEPATH) Worker
+
+server: compile deps
+	java -Djava.rmi.server.hostname=$(HOST) \
+	-classpath $(LIBS):$(SOURCEPATH) Server
 
 clean:
 	$(RM) $(CLASSES:.java=.class)

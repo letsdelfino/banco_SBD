@@ -1,0 +1,4 @@
+#!/bin/sh
+while true; do
+	/mnt/sda2/bin/netcat -l -p 1024 >> workerIPs;
+done
