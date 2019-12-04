@@ -16,3 +16,5 @@ A pasta inserida neste projeto contém o projeto inteiro do eclipse. Os arquivos
 O arquivo physical-diagram.dia contém o diagrama que descreve a
 disposição física da arquitetura e pode ser editado com o programa
 DIA.
+
+A descição completa do trabalho se encontra no arquivo descricao.pdf
